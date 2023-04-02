@@ -15,7 +15,7 @@ import jakarta.persistence.ManyToOne;
 public class People {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private String name;
@@ -144,7 +144,7 @@ public class People {
     public void setUrl(String url) {
         this.url = url;
     }
-    public int getId() {
+    public long getId() {
         return id;
     }
 

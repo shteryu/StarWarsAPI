@@ -15,8 +15,8 @@ import jakarta.persistence.OneToMany;
 public class Planets {
    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     private String name;
     private int rotation_period;
@@ -135,7 +135,7 @@ public class Planets {
         this.films = films;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

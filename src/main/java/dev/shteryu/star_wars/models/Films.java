@@ -14,8 +14,8 @@ import jakarta.persistence.ManyToMany;
 public class Films {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     private int episode_id;
     private String opening_crawl;
@@ -130,7 +130,7 @@ public class Films {
         this.species = species;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

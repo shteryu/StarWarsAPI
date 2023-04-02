@@ -10,8 +10,8 @@ import jakarta.persistence.ManyToMany;
 @Entity
 public class Starships {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     
     private String name;
     private String model;
@@ -144,7 +144,7 @@ public class Starships {
         this.films = films;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 }

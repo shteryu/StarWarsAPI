@@ -12,8 +12,8 @@ import jakarta.persistence.ManyToMany;
 public class Species {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     private String name;
     private String classification;
@@ -128,7 +128,7 @@ public class Species {
         this.films = films;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
