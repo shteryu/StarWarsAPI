@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import dev.shteryu.star_wars.models.Starships;
 
 @Repository
-public interface StarshipsRepository extends CrudRepository<Starships, Long>{
+public interface StarshipsRepository extends CrudRepository<Starships, Integer>{
     
 }

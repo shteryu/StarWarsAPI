@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import dev.shteryu.star_wars.models.Vehicles;
 
 @Repository
-public interface VehicleRepository extends CrudRepository<Vehicles, Long> {
+public interface VehicleRepository extends CrudRepository<Vehicles, Integer> {
     
 }

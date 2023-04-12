@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import dev.shteryu.star_wars.models.Species;
 
 @Repository
-public interface SpeciesRepository extends CrudRepository<Species, Long> {
+public interface SpeciesRepository extends CrudRepository<Species, Integer> {
     
 }

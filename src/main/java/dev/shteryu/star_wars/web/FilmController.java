@@ -29,8 +29,8 @@ public class FilmController {
     }
 
     @GetMapping(value="/{filmId}")
-    public Optional<Films> getPeopleById(@PathVariable Long filmId) {
-        return filmRepo.findById(filmId);
+    public Optional<Films> getFilmById(@PathVariable String filmId) {
+        return filmRepo.findById(Integer.parseInt(filmId));
     }
     
     @PostMapping("")

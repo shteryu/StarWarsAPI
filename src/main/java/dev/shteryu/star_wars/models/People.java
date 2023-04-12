@@ -10,12 +10,20 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class People {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
@@ -59,94 +67,5 @@ public class People {
         joinColumns = @JoinColumn(name = "people_id"),
         inverseJoinColumns = @JoinColumn(name = "starship_id"))
     private Set<Starships> starships;
-
-    public Planets getHomeworld() {
-        return homeworld;
-    }
-    public void setHomeworld(Planets homeworld) {
-        this.homeworld = homeworld;
-    }
-    public Set<Species> getSpecies() {
-        return species;
-    }
-    public void setSpecies(Set<Species> species) {
-        this.species = species;
-    }
-    public Set<Films> getFilms() {
-        return films;
-    }
-    public void setFilms(Set<Films> films) {
-        this.films = films;
-    }
-    public Set<Vehicles> getVehicles() {
-        return vehicles;
-    }
-    public void setVehicles(Set<Vehicles> vehicles) {
-        this.vehicles = vehicles;
-    }
-    public Set<Starships> getStarships() {
-        return starships;
-    }
-    public void setStarships(Set<Starships> starships) {
-        this.starships = starships;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getHeight() {
-        return height;
-    }
-    public void setHeight(int height) {
-        this.height = height;
-    }
-    public int getMass() {
-        return mass;
-    }
-    public void setMass(int mass) {
-        this.mass = mass;
-    }
-    public String getHair_color() {
-        return hair_color;
-    }
-    public void setHair_color(String hair_color) {
-        this.hair_color = hair_color;
-    }
-    public String getSkin_color() {
-        return skin_color;
-    }
-    public void setSkin_color(String skin_color) {
-        this.skin_color = skin_color;
-    }
-    public String getEye_color() {
-        return eye_color;
-    }
-    public void setEye_color(String eye_color) {
-        this.eye_color = eye_color;
-    }
-    public String getBirth_year() {
-        return birth_year;
-    }
-    public void setBirth_year(String birth_year) {
-        this.birth_year = birth_year;
-    }
-    public String getGender() {
-        return gender;
-    }
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    public String getUrl() {
-        return url;
-    }
-    public void setUrl(String url) {
-        this.url = url;
-    }
-    public long getId() {
-        return id;
-    }
-
     
 }
