@@ -1,6 +1,7 @@
 package dev.shteryu.star_wars.models;
 
 import java.util.Set;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,10 +35,10 @@ public class Starships {
     private String vehicle_class;
     private String url;
 
-    @ManyToMany(mappedBy = "starships")
+    @ManyToMany(mappedBy = "starships", cascade = CascadeType.ALL)
     private Set<People> pilots;
 
-    @ManyToMany(mappedBy = "starships")
+    @ManyToMany(mappedBy = "starships", cascade = CascadeType.ALL)
     private Set<Films> films;
 
 }

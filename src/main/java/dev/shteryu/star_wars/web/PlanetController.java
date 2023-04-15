@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import dev.shteryu.star_wars.errors.InvalidObjectException;
-import dev.shteryu.star_wars.mapper.PlanetsMapper;
+import dev.shteryu.star_wars.mapper.PlanetMapper;
 import dev.shteryu.star_wars.models.Planets;
 import dev.shteryu.star_wars.service.PlanetService;
 import dev.shteryu.star_wars.validation.ObjectValidator;
-import dev.shteryu.star_wars.web.dto.PlanetsCreateRequest;
-import dev.shteryu.star_wars.web.dto.PlanetsResponse;
-import dev.shteryu.star_wars.web.dto.PlanetsUpdateRequest;
+import dev.shteryu.star_wars.web.dto.PlanetCreateRequest;
+import dev.shteryu.star_wars.web.dto.PlanetResponse;
+import dev.shteryu.star_wars.web.dto.PlanetUpdateRequest;
 import dev.shteryu.star_wars.web.dto.StarWarsApiPage;
 
 
 @RestController
 @RequestMapping("/planets")
-public class PlanetsController {
+public class PlanetController {
 
     @Autowired
     private ObjectValidator validator;
@@ -35,15 +35,15 @@ public class PlanetsController {
     private PlanetService planetService;
 
     @Autowired
-    private PlanetsMapper planetsMapper;
+    private PlanetMapper planetsMapper;
 
     private final Integer PAFE_SIZE = 10;
 
 
     @GetMapping(name = "", produces = "application/json")
-    public StarWarsApiPage<PlanetsResponse> getAllPlanets(
+    public StarWarsApiPage<PlanetResponse> getAllPlanets(
         @RequestParam(required = false, defaultValue = "0") Integer currentPage) {
-            Page<PlanetsResponse> planetPage =
+            Page<PlanetResponse> planetPage =
             planetService.fetchAll(currentPage, PAFE_SIZE)
             .map(planetsMapper::responseFromModel);
 
@@ -51,14 +51,14 @@ public class PlanetsController {
     }
 
     @GetMapping(value="/{planetId}")
-    public ResponseEntity<PlanetsResponse> getPlanetById(@PathVariable String planetId) {
+    public ResponseEntity<PlanetResponse> getPlanetById(@PathVariable String planetId) {
         Planets planet = planetService.findById(planetId);
 
         return ResponseEntity.ok(planetsMapper.responseFromModel(planet));
     }
     
     @PostMapping("")
-    public ResponseEntity<PlanetsResponse> createPlanet(@RequestBody PlanetsCreateRequest planetDto) {
+    public ResponseEntity<PlanetResponse> createPlanet(@RequestBody PlanetCreateRequest planetDto) {
 
         Map<String, String> validationErrors = validator.validate(planetDto);
         if (validationErrors.size() != 0) {
@@ -67,14 +67,14 @@ public class PlanetsController {
 
         Planets mappedPlanet = planetsMapper.modelFromCreateRequest(planetDto);
         Planets savedPlanet = planetService.save(mappedPlanet);
-        PlanetsResponse responsePlanet = planetsMapper.responseFromModel(savedPlanet);
+        PlanetResponse responsePlanet = planetsMapper.responseFromModel(savedPlanet);
 
         return ResponseEntity.status(201).body(responsePlanet);
     }
 
     @PatchMapping("/{planetId}")
-    public ResponseEntity<PlanetsResponse> updatePlanet(@PathVariable String planetId,
-            @RequestBody PlanetsUpdateRequest planetDto) {
+    public ResponseEntity<PlanetResponse> updatePlanet(@PathVariable String planetId,
+            @RequestBody PlanetUpdateRequest planetDto) {
 
         Map<String, String> validationErrors = validator.validate(planetDto);
         if (validationErrors.size() != 0) {
@@ -87,13 +87,13 @@ public class PlanetsController {
 
         Planets updatedPlanet = planetService.save(currentPlanet);
 
-        PlanetsResponse responsePlanet = planetsMapper.responseFromModel(updatedPlanet);
+        PlanetResponse responsePlanet = planetsMapper.responseFromModel(updatedPlanet);
 
         return ResponseEntity.status(200).body(responsePlanet);
     }
 
     @DeleteMapping("/{planetId}")
-    public void deletePeopleById(@PathVariable String planetId) {
+    public void deletePlanetById(@PathVariable String planetId) {
         planetService.deleteById(planetId);
     }
 

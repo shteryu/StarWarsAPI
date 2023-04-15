@@ -2,6 +2,7 @@ package dev.shteryu.star_wars.models;
 
 import java.util.HashSet;
 import java.util.Set;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class People {
 
     private String name;
     private int height;
-    private int mass;
+    private Double mass;
     private String hair_color;
     private String skin_color;
     private String eye_color;
@@ -47,25 +48,23 @@ public class People {
         inverseJoinColumns = @JoinColumn(name = "species_id"))
     private Set<Species> species = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(
-        name = "people_films",
-        joinColumns = @JoinColumn(name = "people_id"),
-        inverseJoinColumns = @JoinColumn(name = "film_id"))
+   
+    @ManyToMany(mappedBy = "characters", cascade = CascadeType.ALL)
     private Set<Films> films = new HashSet<>();
 
-    @ManyToMany
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
         name="people_vehicles",
         joinColumns = @JoinColumn(name = "people_id"),
         inverseJoinColumns = @JoinColumn(name = "vehicle_id"))
-    private Set<Vehicles> vehicles;
+    private Set<Vehicles> vehicles = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
         name="people_starships",
         joinColumns = @JoinColumn(name = "people_id"),
         inverseJoinColumns = @JoinColumn(name = "starship_id"))
-    private Set<Starships> starships;
+    private Set<Starships> starships = new HashSet<>();
     
 }

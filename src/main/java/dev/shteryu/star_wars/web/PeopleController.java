@@ -73,7 +73,7 @@ public class PeopleController {
     }
 
     @PatchMapping("/{peopleId}")
-    public ResponseEntity<PeopleResponse> updatePerson(@PathVariable String peopleId,
+    public ResponseEntity<PeopleResponse> updatePeople(@PathVariable String peopleId,
             @RequestBody PeopleUpdateRequest peopleDto) {
 
         Map<String, String> validationErrors = validator.validate(peopleDto);
@@ -97,23 +97,5 @@ public class PeopleController {
         peopleService.deleteById(peopleId);
     }
 
-    // @PutMapping(value = "/{personId}/photos")
-    // public PersonPhotosGetResponse setPersonPhotos(@PathVariable String personId,
-    //         @RequestBody PersonPhotosUpsertRequest request) {
-
-    //     Map<String, String> validationErrors = validator.validate(request);
-
-    //     if (validationErrors.size() != 0) {
-    //         throw new InvalidObjectException("Invalid Person Photos Upsert Request",
-    //                 validationErrors);
-    //     }
-
-    //     Set<UUID> allPersonPhotoIds = personService.setPersonPhotos(personId, request.getPersonPhotoIds());
-
-    //     PersonPhotosGetResponse response =
-    //             PersonPhotosGetResponse.builder().personPhotoIds(allPersonPhotoIds).build();
-
-    //     return response;
-    // }
     
 }

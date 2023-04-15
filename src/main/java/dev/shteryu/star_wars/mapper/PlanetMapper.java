@@ -6,26 +6,24 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import dev.shteryu.star_wars.models.Planets;
-import dev.shteryu.star_wars.web.dto.PlanetsCreateRequest;
-import dev.shteryu.star_wars.web.dto.PlanetsDto;
-import dev.shteryu.star_wars.web.dto.PlanetsResponse;
-import dev.shteryu.star_wars.web.dto.PlanetsUpdateRequest;
+import dev.shteryu.star_wars.web.dto.PlanetCreateRequest;
+import dev.shteryu.star_wars.web.dto.PlanetResponse;
+import dev.shteryu.star_wars.web.dto.PlanetUpdateRequest;
 
 @Mapper
-public interface PlanetsMapper {
-
-    PlanetsDto modelToDto(Planets planets);
-    Planets dtoToModel(PlanetsDto planetsDto);
+public interface PlanetMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "films", ignore = true)
     @Mapping(target = "url", ignore = true)
-    Planets modelFromCreateRequest(PlanetsCreateRequest planetsCreateDto);
+    @Mapping(target = "residents", ignore = true)
+    Planets modelFromCreateRequest(PlanetCreateRequest planetsCreateDto);
     
-    PlanetsResponse responseFromModel(Planets planets);
+    PlanetResponse responseFromModel(Planets planets);
 
     @Mapping(target = "films", ignore = true)
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "residents", ignore = true)
     @Mapping(target = "name", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "rotation_period", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "orbital_period", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
@@ -36,8 +34,8 @@ public interface PlanetsMapper {
     @Mapping(target = "surface_water", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "population", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "url", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateModelFromDto(PlanetsUpdateRequest planetsUpdateDto, @MappingTarget Planets planets);
+    void updateModelFromDto(PlanetUpdateRequest planetsUpdateDto, @MappingTarget Planets planets);
 
-    List<PlanetsResponse> listOfModelToListOfDto(Iterable<Planets> planets);   
+    List<PlanetResponse> listOfModelToListOfDto(Iterable<Planets> planets);   
 
 }

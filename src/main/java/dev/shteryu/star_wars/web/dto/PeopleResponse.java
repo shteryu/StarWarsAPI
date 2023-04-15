@@ -1,6 +1,9 @@
 package dev.shteryu.star_wars.web.dto;
 
 import java.util.Set;
+import dev.shteryu.star_wars.models.Films;
+import dev.shteryu.star_wars.models.Planets;
+import dev.shteryu.star_wars.models.Species;
 import lombok.Builder;
 import lombok.Data;
 
@@ -18,6 +21,7 @@ public class PeopleResponse {
     private String birth_year;
     private String gender;
     private String url;
-    private Integer planet_id;
-    private Set<FilmsDto> films;
+    private Planets homeworld;
+    private Set<Films> films;
+    private Set<Species> species;
 }

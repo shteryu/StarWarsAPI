@@ -5,16 +5,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import dev.shteryu.star_wars.errors.NotFoundObjectException;
-import dev.shteryu.star_wars.models.People;
 import dev.shteryu.star_wars.models.Planets;
 import dev.shteryu.star_wars.repository.PlanetPagingRepository;
-import dev.shteryu.star_wars.repository.PlanetsRepository;
+import dev.shteryu.star_wars.repository.PlanetRepository;
 
 @Service
 public class PlanetService {
 
     @Autowired
-    private PlanetsRepository planetRepo;
+    private PlanetRepository planetRepo;
 
     @Autowired
     private PlanetPagingRepository pagingRepo;
@@ -29,30 +28,11 @@ public class PlanetService {
 
     public Planets findById(String planetId) {
         return planetRepo.findById(Integer.parseInt(planetId)).orElseThrow(() -> {
-            throw new NotFoundObjectException("Planet Not Found", People.class.getName(), planetId);
+            throw new NotFoundObjectException("Planet Not Found", Planets.class.getName(), planetId);
         });
     }
 
     public void deleteById(String planetId) {
         planetRepo.deleteById(Integer.parseInt(planetId));
     }
-
-    // public Set<UUID> setPersonPhotos(String personId, Set<UUID> personPhotoIds) {
-    //     Person person = repo.findById(UUID.fromString(personId)).orElseThrow(() -> {
-    //         throw new NotFoundObjectException("Person Not Found", Person.class.getName(), personId);
-    //     });
-
-    //     List<Photo> allPersonPhotos =
-    //             (List<Photo>) photoRepo.findAllById(personPhotoIds);
-
-    //     person.setPhotos(new HashSet<>(allPersonPhotos));
-    //     Person savedPerson = repo.save(person);
-
-    //     Set<UUID> allPersonPhotoIds = new HashSet<>();
-    //     for (Photo photo : savedPerson.getPhotos()) {
-    //         allPersonPhotoIds.add(photo.getId());
-    //     }
-
-    //     return allPersonPhotoIds;
-    // }
 }

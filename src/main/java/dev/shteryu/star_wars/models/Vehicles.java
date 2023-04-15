@@ -2,6 +2,7 @@ package dev.shteryu.star_wars.models;
 
 import java.util.HashSet;
 import java.util.Set;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,10 +37,10 @@ public class Vehicles {
     private String vehicle_class;
     private String url;
 
-    @ManyToMany(mappedBy = "vehicles")
+    @ManyToMany(mappedBy = "vehicles", cascade = CascadeType.ALL)
     private Set<People> pilots = new HashSet<>();
 
-    @ManyToMany(mappedBy = "vehicles")
+    @ManyToMany(mappedBy = "vehicles", cascade = CascadeType.ALL)
     private Set<Films> films = new HashSet<>();
 
 }
