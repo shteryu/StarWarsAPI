@@ -4,7 +4,6 @@ package dev.shteryu.star_wars.models;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,7 +32,6 @@ public class Films {
 
     private String title;
     private int episode_id;
-    @Column(length = 1024)
     private String opening_crawl;
     private String director;
     private String producer;
@@ -46,7 +44,11 @@ public class Films {
         inverseJoinColumns = @JoinColumn(name = "people_id"))
     private Set<People> characters = new HashSet<>();
 
-    @ManyToMany(mappedBy = "films",cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(
+        name = "planets_films",
+        joinColumns = @JoinColumn(name = "film_id"),
+        inverseJoinColumns = @JoinColumn(name = "planet_id"))
     private Set<Planets> planets = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.ALL)

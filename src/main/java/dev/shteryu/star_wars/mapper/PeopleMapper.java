@@ -35,7 +35,6 @@ public interface PeopleMapper {
     @Mapping(target = "eye_color", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "birth_year", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "gender", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "homeworld", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateModelFromDto(PeopleUpdateRequest peopleUpdateDto, @MappingTarget People people);
 
     List<PeopleResponse> listOfModelToListOfDto(Iterable<People> people);

@@ -23,6 +23,8 @@ import dev.shteryu.star_wars.validation.ObjectValidator;
 import dev.shteryu.star_wars.web.dto.FilmCreateRequest;
 import dev.shteryu.star_wars.web.dto.FilmPeopleGetResponse;
 import dev.shteryu.star_wars.web.dto.FilmPeopleUpsertRequest;
+import dev.shteryu.star_wars.web.dto.FilmPlanetsGetResponse;
+import dev.shteryu.star_wars.web.dto.FilmPlanetsUpsertRequest;
 import dev.shteryu.star_wars.web.dto.FilmResponse;
 import dev.shteryu.star_wars.web.dto.FilmUpdateRequest;
 import dev.shteryu.star_wars.web.dto.StarWarsApiPage;
@@ -45,7 +47,7 @@ public class FilmController {
 
 
     @GetMapping(name = "", produces = "application/json")
-    public StarWarsApiPage<FilmResponse> getAllPeople(
+    public StarWarsApiPage<FilmResponse> getAllFilms(
             @RequestParam(required = false, defaultValue = "0") Integer currentPage) {
         Page<FilmResponse> filmPage =
                 filmService.fetchAll(currentPage, PAFE_SIZE).map(filmMapper::responseFromModel);
@@ -116,6 +118,26 @@ public class FilmController {
 
         FilmPeopleGetResponse response =
                 FilmPeopleGetResponse.builder().filmPeopleIds(allFilmPeopleIds).build();
+
+        return response;
+    }
+
+    @PutMapping(value = "/{filmId}/planets")
+    public FilmPlanetsGetResponse setFilmPlanets(@PathVariable String filmId,
+            @RequestBody FilmPlanetsUpsertRequest request) {
+
+        Map<String, String> validationErrors = validator.validate(request);
+
+        if (validationErrors.size() != 0) {
+            throw new InvalidObjectException("Invalid Film Planets Upsert Request",
+                    validationErrors);
+        }
+
+        Set<Integer> allFilmPlanetsIds =
+                filmService.setFilmPlanets(filmId, request.getFilmPlanetsIds());
+
+        FilmPlanetsGetResponse response =
+                FilmPlanetsGetResponse.builder().filmPlanetsIds(allFilmPlanetsIds).build();
 
         return response;
     }

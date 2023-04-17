@@ -1,7 +1,6 @@
 package dev.shteryu.star_wars.web.dto;
 
 import org.hibernate.validator.constraints.Range;
-import dev.shteryu.star_wars.models.Planets;
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,6 +19,5 @@ public class PeopleUpdateRequest {
     private String birth_year;
     private String gender;
     private String url;
-    private Planets homeworld;
     
 }
