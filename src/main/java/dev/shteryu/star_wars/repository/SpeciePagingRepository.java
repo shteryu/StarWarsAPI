@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import dev.shteryu.star_wars.models.Species;
 
 @Repository
-public interface SpeciePagingRepository extends PagingAndSortingRepository<Species, Integer>{
+public interface SpeciePagingRepository extends PagingAndSortingRepository<Species, Long>{
     
 }

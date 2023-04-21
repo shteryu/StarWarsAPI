@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 public class FilmPeopleUpsertRequest {
 
     @NotNull
-    private Set<Integer> filmPeopleIds;
+    private Set<Long> filmPeopleIds;
 
 }

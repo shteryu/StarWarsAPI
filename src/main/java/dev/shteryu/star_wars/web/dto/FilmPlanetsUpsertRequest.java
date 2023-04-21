@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 public class FilmPlanetsUpsertRequest {
 
     @NotNull
-    private Set<Integer> filmPlanetsIds;
+    private Set<Long> filmPlanetsIds;
 
 }

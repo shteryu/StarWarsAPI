@@ -1,9 +1,12 @@
 package dev.shteryu.star_wars.web.dto;
 
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.shteryu.star_wars.models.Films;
 import dev.shteryu.star_wars.models.Planets;
 import dev.shteryu.star_wars.models.Species;
+import dev.shteryu.star_wars.models.Starships;
+import dev.shteryu.star_wars.models.Vehicles;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,17 +14,25 @@ import lombok.Data;
 @Builder
 public class PeopleResponse {
     
-    private Integer id;
+    private Long id;
     private String name;
     private Integer height;
     private Integer mass;
-    private String hair_color;
-    private String skin_color;
-    private String eye_color;
-    private String birth_year;
+    private String hairColor;
+    private String skinColor;
+    private String eyeColor;
+    private String birthYear;
     private String gender;
     private String url;
-    private Planets homeworld;
-    private Set<Films> films;
-    private Set<Species> species;
+    @JsonProperty(value = "planets")
+    private Planets peoplePlanets;
+    @JsonProperty(value = "films")
+    private Set<Films> peopleFilms;
+    @JsonProperty(value = "species")
+    private Set<Species> peopleSpecies;
+    @JsonProperty(value = "vehicles")
+    private Set<Vehicles> peopleVehicles;
+    @JsonProperty(value = "starships")
+    private Set<Starships> peopleStarships;
+
 }

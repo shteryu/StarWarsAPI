@@ -27,12 +27,12 @@ public class StarshipService {
     }
 
     public Starships findById(String starshipId) {
-        return starshipRepo.findById(Integer.parseInt(starshipId)).orElseThrow(() -> {
+        return starshipRepo.findById(Long.parseLong(starshipId)).orElseThrow(() -> {
             throw new NotFoundObjectException("Starship Not Found", Starships.class.getName(), starshipId);
         });
     }
 
     public void deleteById(String starshipId) {
-        starshipRepo.deleteById(Integer.parseInt(starshipId));
+        starshipRepo.deleteById(Long.parseLong(starshipId));
     }
 }

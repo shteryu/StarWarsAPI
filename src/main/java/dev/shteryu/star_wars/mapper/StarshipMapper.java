@@ -14,25 +14,25 @@ import dev.shteryu.star_wars.web.dto.StarshipUpdateRequest;
 public interface StarshipMapper {
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "pilots", ignore = true)
-    @Mapping(target = "films", ignore = true)
+    @Mapping(target = "starshipPeople", ignore = true)
+    @Mapping(target = "starshipFilms", ignore = true)
     Starships modelFromCreateRequest(StarshipCreateRequest StarshipCreateDto);
     
     StarshipResponse responseFromModel(Starships starship);
 
-    @Mapping(target = "pilots", ignore = true)
-    @Mapping(target = "films", ignore = true)
+    @Mapping(target = "starshipPeople", ignore = true)
+    @Mapping(target = "starshipFilms", ignore = true)
     @Mapping(target = "name", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "model", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "manufacturer", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "cost_in_credits", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "costInCredits", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "length", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "max_atmosphering_speed", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "maxAtmospheringSpeed", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "crew", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "passengers", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "cargo_capacity", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "cargoCapacity", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "consumables", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "vehicle_class", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "vehicleClass", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "url", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateModelFromDto(StarshipUpdateRequest starshipUpdateDto, @MappingTarget Starships starship);
 

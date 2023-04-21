@@ -40,47 +40,47 @@ public class FilmService {
     }
 
     public Films findById(String filmId) {
-        return filmRepo.findById(Integer.parseInt(filmId)).orElseThrow(() -> {
+        return filmRepo.findById(Long.parseLong(filmId)).orElseThrow(() -> {
             throw new NotFoundObjectException("Film Not Found", Films.class.getName(), filmId);
         });
     }
 
     public void deleteById(String filmId) {
-        filmRepo.deleteById(Integer.parseInt(filmId));
+        filmRepo.deleteById(Long.parseLong(filmId));
     }
 
-    public Set<Integer> setFilmPeople(String filmId, Set<Integer> filmPeopleIds) {
-        Films film = filmRepo.findById(Integer.parseInt(filmId)).orElseThrow(() -> {
+    public Set<Long> setFilmPeople(String filmId, Set<Long> filmPeopleIds) {
+        Films film = filmRepo.findById(Long.parseLong(filmId)).orElseThrow(() -> {
             throw new NotFoundObjectException("Film Not Found", Films.class.getName(), filmId);
         });
 
         List<People> allFilmPeople =
                 (List<People>) peopleRepo.findAllById(filmPeopleIds);
 
-        film.setCharacters(new HashSet<>(allFilmPeople));
+        film.setFilmPeople(new HashSet<>(allFilmPeople));
         Films savedFilm = filmRepo.save(film);
 
-        Set<Integer> allFilmPeopleIds = new HashSet<>();
-        for (People people : savedFilm.getCharacters()) {
+        Set<Long> allFilmPeopleIds = new HashSet<>();
+        for (People people : savedFilm.getFilmPeople()) {
             allFilmPeopleIds.add(people.getId());
         }
 
         return allFilmPeopleIds;
     }
 
-    public Set<Integer> setFilmPlanets(String filmId, Set<Integer> filmPlanetsIds) {
-        Films film = filmRepo.findById(Integer.parseInt(filmId)).orElseThrow(() -> {
+    public Set<Long> setFilmPlanets(String filmId, Set<Long> filmPlanetsIds) {
+        Films film = filmRepo.findById(Long.parseLong(filmId)).orElseThrow(() -> {
             throw new NotFoundObjectException("Film Not Found", Films.class.getName(), filmId);
         });
 
         List<Planets> allFilmPlanets =
                 (List<Planets>) planetsRepo.findAllById(filmPlanetsIds);
 
-        film.setPlanets(new HashSet<>(allFilmPlanets));
+        film.setFilmPlanets(new HashSet<>(allFilmPlanets));
         Films savedFilm = filmRepo.save(film);
 
-        Set<Integer> allFilmPlanetsIds = new HashSet<>();
-        for (Planets planet : savedFilm.getPlanets()) {
+        Set<Long> allFilmPlanetsIds = new HashSet<>();
+        for (Planets planet : savedFilm.getFilmPlanets()) {
             allFilmPlanetsIds.add(planet.getId());
         }
 

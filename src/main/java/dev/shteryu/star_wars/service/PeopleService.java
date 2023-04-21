@@ -27,12 +27,12 @@ public class PeopleService {
     }
 
     public People findById(String peopleId) {
-        return peopleRepo.findById(Integer.parseInt(peopleId)).orElseThrow(() -> {
+        return peopleRepo.findById(Long.parseLong(peopleId)).orElseThrow(() -> {
             throw new NotFoundObjectException("Person Not Found", People.class.getName(), peopleId);
         });
     }
 
     public void deleteById(String peopleId) {
-        peopleRepo.deleteById(Integer.parseInt(peopleId));
+        peopleRepo.deleteById(Long.parseLong(peopleId));
     }
 }

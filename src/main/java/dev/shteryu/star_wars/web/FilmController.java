@@ -113,7 +113,7 @@ public class FilmController {
                     validationErrors);
         }
 
-        Set<Integer> allFilmPeopleIds =
+        Set<Long> allFilmPeopleIds =
                 filmService.setFilmPeople(filmId, request.getFilmPeopleIds());
 
         FilmPeopleGetResponse response =
@@ -133,7 +133,7 @@ public class FilmController {
                     validationErrors);
         }
 
-        Set<Integer> allFilmPlanetsIds =
+        Set<Long> allFilmPlanetsIds =
                 filmService.setFilmPlanets(filmId, request.getFilmPlanetsIds());
 
         FilmPlanetsGetResponse response =

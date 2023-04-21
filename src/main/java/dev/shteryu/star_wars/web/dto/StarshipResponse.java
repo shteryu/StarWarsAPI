@@ -1,6 +1,7 @@
 package dev.shteryu.star_wars.web.dto;
 
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.shteryu.star_wars.models.Films;
 import dev.shteryu.star_wars.models.People;
 import lombok.Builder;
@@ -10,19 +11,21 @@ import lombok.Data;
 @Builder
 public class StarshipResponse {
     
-    private long id;
+    private Long id;
     private String name;
     private String model;
     private String manufacturer;
-    private long cost_in_credits;
+    private long costInCredits;
     private double length;
-    private int max_atmosphering_speed;
+    private int maxAtmospheringSpeed;
     private int crew;
     private int passengers;
-    private long cargo_capacity;
+    private long cargoCapacity;
     private String consumables;
-    private String vehicle_class;
+    private String vehicleClass;
     private String url;
-    private Set<People> pilots;
-    private Set<Films> films;
+    @JsonProperty(value = "pilots")
+    private Set<People> starshipPilots;
+    @JsonProperty(value = "films")
+    private Set<Films> starshipFilms;
 }

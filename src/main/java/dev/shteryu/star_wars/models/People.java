@@ -2,7 +2,7 @@ package dev.shteryu.star_wars.models;
 
 import java.util.HashSet;
 import java.util.Set;
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,11 +13,13 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,46 +27,42 @@ public class People {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String name;
     private int height;
     private Double mass;
-    private String hair_color;
-    private String skin_color;
-    private String eye_color;
-    private String birth_year;
+    private String hairColor;
+    private String skinColor;
+    private String eyeColor;
+    private String birthYear;
     private String gender;
     private String url;
 
     @ManyToOne
-    @JoinColumn(name="planet_id")
-    private Planets homeworld;
+    @JoinColumn(name = "planetId")
+    private Planets peoplePlanets;
 
+    @JsonIgnore
     @ManyToMany
-    @JoinTable(
-        name = "people_species",
-        joinColumns = @JoinColumn(name = "people_id"),
-        inverseJoinColumns = @JoinColumn(name = "species_id"))
-    private Set<Species> species = new HashSet<>();
+    @JoinTable(name = "people_species", joinColumns = @JoinColumn(name = "people_id"),
+            inverseJoinColumns = @JoinColumn(name = "species_id"))
+    private Set<Species> peopleSpecies = new HashSet<>();
 
-   
-    @ManyToMany(mappedBy = "characters", cascade = CascadeType.ALL)
-    private Set<Films> films = new HashSet<>();
+    @JsonIgnore
+    @ManyToMany(mappedBy = "filmPeople")
+    private Set<Films> peopleFilms = new HashSet<>();
 
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "people_vehicles", joinColumns = @JoinColumn(name = "people_id"),
+            inverseJoinColumns = @JoinColumn(name = "vehicle_id"))
+    private Set<Vehicles> peopleVehicles = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-        name="people_vehicles",
-        joinColumns = @JoinColumn(name = "people_id"),
-        inverseJoinColumns = @JoinColumn(name = "vehicle_id"))
-    private Set<Vehicles> vehicles = new HashSet<>();
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "people_starships", joinColumns = @JoinColumn(name = "people_id"),
+            inverseJoinColumns = @JoinColumn(name = "starship_id"))
+    private Set<Starships> peopleStarships = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-        name="people_starships",
-        joinColumns = @JoinColumn(name = "people_id"),
-        inverseJoinColumns = @JoinColumn(name = "starship_id"))
-    private Set<Starships> starships = new HashSet<>();
-    
 }

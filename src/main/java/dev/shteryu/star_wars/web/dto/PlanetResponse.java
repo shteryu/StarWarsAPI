@@ -1,6 +1,7 @@
 package dev.shteryu.star_wars.web.dto;
 
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.shteryu.star_wars.models.Films;
 import dev.shteryu.star_wars.models.People;
 import lombok.Builder;
@@ -10,17 +11,19 @@ import lombok.Data;
 @Builder
 public class PlanetResponse {
     
-    private int id;
+    private Long id;
     private String name;
-    private int rotation_period;
-    private int orbital_period;
+    private int rotationPeriod;
+    private int orbitalPeriod;
     private long diameter;
     private String climate;
     private String gravity;
     private String terrain;
-    private int surface_water;
+    private int surfaceWater;
     private long population;
     private String url;
-    private Set<People> residents;
-    private Set<Films> films;
+    @JsonProperty(value = "residents")
+    private Set<People> planetPeople;
+    @JsonProperty(value = "films")
+    private Set<Films> planetFilms;
 }

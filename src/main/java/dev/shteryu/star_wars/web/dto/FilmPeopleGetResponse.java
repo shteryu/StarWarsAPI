@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FilmPeopleGetResponse {
 
-    private Set<Integer> filmPeopleIds;
+    private Set<Long> filmPeopleIds;
 
 }

@@ -12,12 +12,12 @@ public class SpecieUpdateRequest {
     private String classification;
     private String designation;
     @Range(min = 1, message = "i like average_height min 1")
-    private int average_height;
-    private String skin_colors;
-    private String hair_colors;
-    private String eye_colors;
+    private int averageHeight;
+    private String skinColors;
+    private String hairColors;
+    private String eyeColors;
     @Range(min = 1, message = "i like average_lifespan min 1")
-    private int average_lifespan;
+    private int averageLifespan;
     private String homeworld;
     private String language;
     

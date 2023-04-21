@@ -14,26 +14,26 @@ import dev.shteryu.star_wars.web.dto.PeopleUpdateRequest;
 public interface PeopleMapper {
     
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "films", ignore = true)
-    @Mapping(target = "species", ignore = true)
-    @Mapping(target = "vehicles", ignore = true)
-    @Mapping(target = "starships", ignore = true)
+    @Mapping(target = "peopleFilms", ignore = true)
+    @Mapping(target = "peopleSpecies", ignore = true)
+    @Mapping(target = "peopleVehicles", ignore = true)
+    @Mapping(target = "peopleStarships", ignore = true)
     @Mapping(target = "url", ignore = true)
     People modelFromCreateRequest(PeopleCreateRequest peopleCreateDto);
     
     PeopleResponse responseFromModel(People people);
 
-    @Mapping(target = "films", ignore = true)
-    @Mapping(target = "species", ignore = true)
-    @Mapping(target = "vehicles", ignore = true)
-    @Mapping(target = "starships", ignore = true)
+    @Mapping(target = "peopleFilms", ignore = true)
+    @Mapping(target = "peopleSpecies", ignore = true)
+    @Mapping(target = "peopleVehicles", ignore = true)
+    @Mapping(target = "peopleStarships", ignore = true)
     @Mapping(target = "name", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "height", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "mass", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "hair_color", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "skin_color", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "eye_color", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "birth_year", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "hairColor", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "skinColor", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "eyeColor", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "birthYear", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "gender", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateModelFromDto(PeopleUpdateRequest peopleUpdateDto, @MappingTarget People people);
 

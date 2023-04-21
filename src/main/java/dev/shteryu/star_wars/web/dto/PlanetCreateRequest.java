@@ -10,16 +10,16 @@ public class PlanetCreateRequest {
 
     private String name;
     @Range(min = 1, message = "i like rotation_period min 1")
-    private int rotation_period;
+    private int rotationPeriod;
     @Range(min = 1, message = "i like orbital_period min 1")
-    private int orbital_period;
+    private int orbitalPeriod;
     @Range(min = 1, message = "i like diameter min 1")
     private long diameter;
     private String climate;
     private String gravity;
     private String terrain;
     @Range(min = 1, message = "i like surface_water min 1")
-    private int surface_water;
+    private int surfaceWater;
     @Range(min = 1, message = "i like population min 1")
     private long population;
     private String url;

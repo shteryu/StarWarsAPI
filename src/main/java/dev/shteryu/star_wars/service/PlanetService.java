@@ -27,12 +27,12 @@ public class PlanetService {
     }
 
     public Planets findById(String planetId) {
-        return planetRepo.findById(Integer.parseInt(planetId)).orElseThrow(() -> {
+        return planetRepo.findById(Long.parseLong(planetId)).orElseThrow(() -> {
             throw new NotFoundObjectException("Planet Not Found", Planets.class.getName(), planetId);
         });
     }
 
     public void deleteById(String planetId) {
-        planetRepo.deleteById(Integer.parseInt(planetId));
+        planetRepo.deleteById(Long.parseLong(planetId));
     }
 }

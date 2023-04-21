@@ -13,23 +13,23 @@ import dev.shteryu.star_wars.web.dto.SpecieUpdateRequest;
 @Mapper
 public interface SpecieMapper {
 
+    @Mapping(target = "speciePeople", ignore = true)
+    @Mapping(target = "specieFilms", ignore = true)
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "people", ignore = true)
-    @Mapping(target = "films", ignore = true)
     Species modelFromCreateRequest(SpecieCreateRequest SpecieCreateDto);
     
     SpecieResponse responseFromModel(Species specie);
 
-    @Mapping(target = "people", ignore = true)
-    @Mapping(target = "films", ignore = true)
+    @Mapping(target = "speciePeople", ignore = true)
+    @Mapping(target = "specieFilms", ignore = true)
     @Mapping(target = "name", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "classification", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "designation", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "average_height", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "skin_colors", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "hair_colors", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "eye_colors", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "average_lifespan", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "averageHeight", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "skinColors", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "hairColors", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "eyeColors", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "averageLifespan", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "homeworld", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "language", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateModelFromDto(SpecieUpdateRequest specieUpdateDto, @MappingTarget Species specie);

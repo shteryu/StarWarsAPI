@@ -27,12 +27,12 @@ public class SpecieService {
     }
 
     public Species findById(String specieId) {
-        return specieRepo.findById(Integer.parseInt(specieId)).orElseThrow(() -> {
+        return specieRepo.findById(Long.parseLong(specieId)).orElseThrow(() -> {
             throw new NotFoundObjectException("Specie Not Found", Species.class.getName(), specieId);
         });
     }
 
     public void deleteById(String specieId) {
-        specieRepo.deleteById(Integer.parseInt(specieId));
+        specieRepo.deleteById(Long.parseLong(specieId));
     }
 }

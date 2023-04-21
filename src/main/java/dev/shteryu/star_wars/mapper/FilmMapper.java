@@ -14,26 +14,26 @@ import dev.shteryu.star_wars.web.dto.FilmUpdateRequest;
 public interface FilmMapper {
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "characters", ignore = true)
-    @Mapping(target = "planets", ignore = true)
-    @Mapping(target = "starships", ignore = true)
-    @Mapping(target = "vehicles", ignore = true)
-    @Mapping(target = "species", ignore = true)
+    @Mapping(target = "filmPeople", ignore = true)
+    @Mapping(target = "filmPlanets", ignore = true)
+    @Mapping(target = "filmStarships", ignore = true)
+    @Mapping(target = "filmVehicles", ignore = true)
+    @Mapping(target = "filmSpecies", ignore = true)
     Films modelFromCreateRequest(FilmCreateRequest filmCreateDto);
     
     FilmResponse responseFromModel(Films film);
 
-    @Mapping(target = "characters", ignore = true)
-    @Mapping(target = "planets", ignore = true)
-    @Mapping(target = "starships", ignore = true)
-    @Mapping(target = "vehicles", ignore = true)
-    @Mapping(target = "species", ignore = true)
+    @Mapping(target = "filmPeople", ignore = true)
+    @Mapping(target = "filmPlanets", ignore = true)
+    @Mapping(target = "filmStarships", ignore = true)
+    @Mapping(target = "filmVehicles", ignore = true)
+    @Mapping(target = "filmSpecies", ignore = true)
     @Mapping(target = "title", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "episode_id", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "opening_crawl", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "episodeId", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "openingCrawl", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "director", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "producer", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "release_date", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "releaseDate", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateModelFromDto(FilmUpdateRequest filmUpdateDto, @MappingTarget Films film);
 
     List<FilmResponse> listOfModelToListOfDto(Iterable<Films> film);

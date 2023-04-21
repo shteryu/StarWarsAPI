@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import dev.shteryu.star_wars.models.Films;
 
 @Repository
-public interface FilmPagingRepository extends PagingAndSortingRepository<Films, Integer>{
+public interface FilmPagingRepository extends PagingAndSortingRepository<Films, Long>{
     
 }

@@ -96,24 +96,5 @@ public class VehicleController {
     public void deleteVehicleById(@PathVariable String vehicleId) {
         vehicleService.deleteById(vehicleId);
     }
-
-    // @PutMapping(value = "/{personId}/photos")
-    // public PersonPhotosGetResponse setPersonPhotos(@PathVariable String personId,
-    //         @RequestBody PersonPhotosUpsertRequest request) {
-
-    //     Map<String, String> validationErrors = validator.validate(request);
-
-    //     if (validationErrors.size() != 0) {
-    //         throw new InvalidObjectException("Invalid Person Photos Upsert Request",
-    //                 validationErrors);
-    //     }
-
-    //     Set<UUID> allPersonPhotoIds = personService.setPersonPhotos(personId, request.getPersonPhotoIds());
-
-    //     PersonPhotosGetResponse response =
-    //             PersonPhotosGetResponse.builder().personPhotoIds(allPersonPhotoIds).build();
-
-    //     return response;
-    // }
     
 }

@@ -2,7 +2,7 @@ package dev.shteryu.star_wars.models;
 
 import java.util.HashSet;
 import java.util.Set;
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,11 +10,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,23 +24,25 @@ public class Species {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
     private String classification;
     private String designation;
-    private int average_height;
-    private String skin_colors;
-    private String hair_colors;
-    private String eye_colors;
-    private int average_lifespan;
+    private int averageHeight;
+    private String skinColors;
+    private String hairColors;
+    private String eyeColors;
+    private int averageLifespan;
     private String homeworld;
     private String language;
 
-    @ManyToMany(mappedBy="species", cascade = CascadeType.ALL)
-    private Set<People> people;
+    @JsonIgnore
+    @ManyToMany(mappedBy="peopleSpecies")
+    private Set<People> speciePeople;
 
-    @ManyToMany(mappedBy = "species", cascade = CascadeType.ALL)
-    private Set<Films> films = new HashSet<>();
+    @JsonIgnore
+    @ManyToMany(mappedBy = "filmSpecies")
+    private Set<Films> specieFilms = new HashSet<>();
 
 }

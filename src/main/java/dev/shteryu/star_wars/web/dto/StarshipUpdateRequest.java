@@ -12,19 +12,19 @@ public class StarshipUpdateRequest {
     private String model;
     private String manufacturer;
     @Range(min = 1, message = "i like cost_in_credits min 1")
-    private long cost_in_credits;
+    private long costInCredits;
     @Range(min = 1, message = "i like length min 1")
     private double length;
     @Range(min = 1, message = "i like max_atmosphering_speed min 1")
-    private int max_atmosphering_speed;
+    private int maxAtmospheringSpeed;
     @Range(min = 1, message = "i like crew min 1")
     private int crew;
     @Range(min = 1, message = "i like passengers min 1")
     private int passengers;
     @Range(min = 1, message = "i like cargo_capacity min 1")
-    private long cargo_capacity;
+    private long cargoCapacity;
     private String consumables;
-    private String vehicle_class;
+    private String vehicleClass;
     private String url;
     
 }

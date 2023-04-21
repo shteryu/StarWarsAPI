@@ -27,12 +27,12 @@ public class VehicleService {
     }
 
     public Vehicles findById(String vehicleId) {
-        return vehicleRepo.findById(Integer.parseInt(vehicleId)).orElseThrow(() -> {
+        return vehicleRepo.findById(Long.parseLong(vehicleId)).orElseThrow(() -> {
             throw new NotFoundObjectException("Vehicle Not Found", Vehicles.class.getName(), vehicleId);
         });
     }
 
     public void deleteById(String vehicleId) {
-        vehicleRepo.deleteById(Integer.parseInt(vehicleId));
+        vehicleRepo.deleteById(Long.parseLong(vehicleId));
     }
 }
