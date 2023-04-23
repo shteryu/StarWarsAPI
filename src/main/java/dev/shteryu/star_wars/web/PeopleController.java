@@ -62,7 +62,7 @@ public class PeopleController {
 
         Map<String, String> validationErrors = validator.validate(peopleDto);
         if (validationErrors.size() != 0) {
-            throw new InvalidObjectException("Invalid Person Create", validationErrors);
+            throw new InvalidObjectException("Invalid People Create", validationErrors);
         }
 
         People mappedPeople = peopleMapper.modelFromCreateRequest(peopleDto);
@@ -78,7 +78,7 @@ public class PeopleController {
 
         Map<String, String> validationErrors = validator.validate(peopleDto);
         if (validationErrors.size() != 0) {
-            throw new InvalidObjectException("Invalid Person Create", validationErrors);
+            throw new InvalidObjectException("Invalid People Create", validationErrors);
         }
 
         People currentPeople = peopleService.findById(peopleId);

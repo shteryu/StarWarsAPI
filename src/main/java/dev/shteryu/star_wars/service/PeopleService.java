@@ -28,7 +28,7 @@ public class PeopleService {
 
     public People findById(String peopleId) {
         return peopleRepo.findById(Long.parseLong(peopleId)).orElseThrow(() -> {
-            throw new NotFoundObjectException("Person Not Found", People.class.getName(), peopleId);
+            throw new NotFoundObjectException("People Not Found", People.class.getName(), peopleId);
         });
     }
 

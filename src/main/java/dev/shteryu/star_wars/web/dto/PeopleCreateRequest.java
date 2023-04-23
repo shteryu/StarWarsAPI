@@ -1,6 +1,8 @@
 package dev.shteryu.star_wars.web.dto;
 
 import org.hibernate.validator.constraints.Range;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,6 +10,8 @@ import lombok.Data;
 @Builder
 public class PeopleCreateRequest {
 
+    @NotNull(message = "i like name not null")
+    @NotEmpty(message = "i like name not empty")
     private String name;
     @Range(min = 1, max = 240, message = "i like height from 1 to 240")
     private Integer height;
