@@ -1,6 +1,7 @@
 package dev.shteryu.star_wars.web.dto;
 
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.shteryu.star_wars.models.Films;
 import dev.shteryu.star_wars.models.People;
@@ -24,8 +25,10 @@ public class VehicleResponse {
     private String consumables;
     private String vehicleClass;
     private String url;
+    @JsonIgnoreProperties("vehiclePeople")
     @JsonProperty(value = "pilots")
     private Set<People> vehiclePeople;
+    @JsonIgnoreProperties("vehicleFilms")
     @JsonProperty(value = "films")
     private Set<Films> vehicleFilms;
 }

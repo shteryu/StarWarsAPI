@@ -1,6 +1,7 @@
 package dev.shteryu.star_wars.web.dto;
 
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.shteryu.star_wars.models.Films;
 import dev.shteryu.star_wars.models.People;
@@ -23,8 +24,10 @@ public class SpecieResponse {
     private int averageLifespan;
     private String homeworld;
     private String language;
+    @JsonIgnoreProperties("speciePeople")
     @JsonProperty(value = "people")
     private Set<People> speciePeople;
+    @JsonIgnoreProperties("specieFilms")
     @JsonProperty(value = "films")
     private Set<Films> specieFilms;
 }

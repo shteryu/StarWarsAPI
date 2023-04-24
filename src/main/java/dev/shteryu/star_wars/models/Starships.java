@@ -1,7 +1,6 @@
 package dev.shteryu.star_wars.models;
 
 import java.util.Set;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,11 +36,9 @@ public class Starships {
     private String vehicleClass;
     private String url;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "peopleStarships")
     private Set<People> starshipPeople;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "filmStarships")
     private Set<Films> starshipFilms;
 

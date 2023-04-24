@@ -2,7 +2,6 @@ package dev.shteryu.star_wars.models;
 
 import java.util.HashSet;
 import java.util.Set;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,11 +36,9 @@ public class Species {
     private String homeworld;
     private String language;
 
-    @JsonIgnore
     @ManyToMany(mappedBy="peopleSpecies")
     private Set<People> speciePeople;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "filmSpecies")
     private Set<Films> specieFilms = new HashSet<>();
 

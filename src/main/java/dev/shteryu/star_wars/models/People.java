@@ -2,7 +2,6 @@ package dev.shteryu.star_wars.models;
 
 import java.util.HashSet;
 import java.util.Set;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -43,23 +42,19 @@ public class People {
     @JoinColumn(name = "planetId")
     private Planets peoplePlanets;
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "people_species", joinColumns = @JoinColumn(name = "people_id"),
             inverseJoinColumns = @JoinColumn(name = "species_id"))
     private Set<Species> peopleSpecies = new HashSet<>();
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "filmPeople")
     private Set<Films> peopleFilms = new HashSet<>();
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "people_vehicles", joinColumns = @JoinColumn(name = "people_id"),
             inverseJoinColumns = @JoinColumn(name = "vehicle_id"))
     private Set<Vehicles> peopleVehicles = new HashSet<>();
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "people_starships", joinColumns = @JoinColumn(name = "people_id"),
             inverseJoinColumns = @JoinColumn(name = "starship_id"))

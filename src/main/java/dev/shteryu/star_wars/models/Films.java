@@ -54,7 +54,6 @@ public class Films {
         inverseJoinColumns = @JoinColumn(name = "planet_id"))
     private Set<Planets> filmPlanets = new HashSet<>();
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "films_starships",
@@ -62,7 +61,6 @@ public class Films {
         inverseJoinColumns = @JoinColumn(name = "starship_id"))
     private Set<Starships> filmStarships = new HashSet<>();
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "films_vehicle",
@@ -70,7 +68,6 @@ public class Films {
         inverseJoinColumns = @JoinColumn(name = "vehicle_id"))
     private Set<Vehicles> filmVehicles = new HashSet<>();
     
-    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "films_species",
