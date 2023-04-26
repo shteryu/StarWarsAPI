@@ -22,6 +22,8 @@ import dev.shteryu.star_wars.web.dto.StarWarsApiPage;
 import dev.shteryu.star_wars.web.dto.StarshipCreateRequest;
 import dev.shteryu.star_wars.web.dto.StarshipResponse;
 import dev.shteryu.star_wars.web.dto.StarshipUpdateRequest;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
@@ -58,6 +60,7 @@ public class StarshipController {
     }
     
     @PostMapping("")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<StarshipResponse> createStarship(@RequestBody StarshipCreateRequest starshipDto) {
 
         Map<String, String> validationErrors = validator.validate(starshipDto);
@@ -73,6 +76,7 @@ public class StarshipController {
     }
 
     @PatchMapping("/{starshipId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<StarshipResponse> updateStarship(@PathVariable String starshipId,
             @RequestBody StarshipUpdateRequest starshipDto) {
 
@@ -93,6 +97,7 @@ public class StarshipController {
     }
 
     @DeleteMapping("/{starshipId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public void deleteStarshipById(@PathVariable String starshipId) {
         starshipService.deleteById(starshipId);
     }

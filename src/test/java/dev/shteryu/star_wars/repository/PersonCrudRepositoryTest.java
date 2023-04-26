@@ -21,7 +21,7 @@ public class PersonCrudRepositoryTest {
     private TestEntityManager entityManager;
 
     @Test
-    @Sql("classpath:db/singlePerson.sql")
+    @Sql("classpath:db/insertPeople.sql")
     void shouldFetchPersonByIdFromDb() {
         String existingID = "10";
         Optional<People> peopleOptional = repository.findById(Long.parseLong(existingID));

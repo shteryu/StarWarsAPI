@@ -15,6 +15,7 @@ import lombok.Data;
 @Builder
 public class PeopleResponse {
     
+    
     private Long id;
     private String name;
     private Integer height;

@@ -22,6 +22,8 @@ import dev.shteryu.star_wars.web.dto.StarWarsApiPage;
 import dev.shteryu.star_wars.web.dto.VehicleCreateRequest;
 import dev.shteryu.star_wars.web.dto.VehicleResponse;
 import dev.shteryu.star_wars.web.dto.VehicleUpdateRequest;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
@@ -58,6 +60,7 @@ public class VehicleController {
     }
     
     @PostMapping("")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<VehicleResponse> createVehicle(@RequestBody VehicleCreateRequest vehicleDto) {
 
         Map<String, String> validationErrors = validator.validate(vehicleDto);
@@ -73,6 +76,7 @@ public class VehicleController {
     }
 
     @PatchMapping("/{vehicleId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<VehicleResponse> updateVehicle(@PathVariable String vehicleId,
             @RequestBody VehicleUpdateRequest vehicleDto) {
 
@@ -93,6 +97,7 @@ public class VehicleController {
     }
 
     @DeleteMapping("/{vehicleId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public void deleteVehicleById(@PathVariable String vehicleId) {
         vehicleService.deleteById(vehicleId);
     }

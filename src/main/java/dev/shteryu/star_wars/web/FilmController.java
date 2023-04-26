@@ -28,6 +28,8 @@ import dev.shteryu.star_wars.web.dto.FilmPlanetsUpsertRequest;
 import dev.shteryu.star_wars.web.dto.FilmResponse;
 import dev.shteryu.star_wars.web.dto.FilmUpdateRequest;
 import dev.shteryu.star_wars.web.dto.StarWarsApiPage;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
@@ -63,6 +65,7 @@ public class FilmController {
     }
 
     @PostMapping("")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<FilmResponse> createFilm(@RequestBody FilmCreateRequest filmDto) {
 
         Map<String, String> validationErrors = validator.validate(filmDto);
@@ -78,6 +81,7 @@ public class FilmController {
     }
 
     @PatchMapping("/{filmId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<FilmResponse> updateFilm(@PathVariable String filmId,
             @RequestBody FilmUpdateRequest filmDto) {
 
@@ -98,11 +102,13 @@ public class FilmController {
     }
 
     @DeleteMapping("/{filmId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public void deleteFilmById(@PathVariable String filmId) {
         filmService.deleteById(filmId);
     }
 
     @PutMapping(value = "/{filmId}/people")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public FilmPeopleGetResponse setFilmPeople(@PathVariable String filmId,
             @RequestBody FilmPeopleUpsertRequest request) {
 
@@ -123,6 +129,7 @@ public class FilmController {
     }
 
     @PutMapping(value = "/{filmId}/planets")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public FilmPlanetsGetResponse setFilmPlanets(@PathVariable String filmId,
             @RequestBody FilmPlanetsUpsertRequest request) {
 

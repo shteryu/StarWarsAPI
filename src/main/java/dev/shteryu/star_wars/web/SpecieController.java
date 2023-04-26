@@ -22,6 +22,8 @@ import dev.shteryu.star_wars.web.dto.SpecieCreateRequest;
 import dev.shteryu.star_wars.web.dto.SpecieResponse;
 import dev.shteryu.star_wars.web.dto.SpecieUpdateRequest;
 import dev.shteryu.star_wars.web.dto.StarWarsApiPage;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
@@ -58,6 +60,7 @@ public class SpecieController {
     }
     
     @PostMapping("")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<SpecieResponse> createSpecie(@RequestBody SpecieCreateRequest specieDto) {
 
         Map<String, String> validationErrors = validator.validate(specieDto);
@@ -73,6 +76,7 @@ public class SpecieController {
     }
 
     @PatchMapping("/{specieId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<SpecieResponse> updateSpecie(@PathVariable String specieId,
             @RequestBody SpecieUpdateRequest specieDto) {
 
@@ -93,6 +97,7 @@ public class SpecieController {
     }
 
     @DeleteMapping("/{specieId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public void deleteSpecieById(@PathVariable String specieId) {
         specieService.deleteById(specieId);
     }

@@ -22,11 +22,10 @@ public class TokenManagerService {
    public String generateJwtToken(UserDetails userDetails) { 
       Map<String, Object> claims = new HashMap<>(); 
 
-      return Jwts.builder().setClaims(claims).setSubject(userDetails.getUsername()) 
-        //  .setIssuer(null)
+      return Jwts.builder().setClaims(claims).setSubject(userDetails.getUsername())
          .setIssuedAt(new Date(System.currentTimeMillis())) 
          .setExpiration(new Date(System.currentTimeMillis() + TOKEN_VALIDITY * 1000))
-         .signWith(key).compact(); 
+         .signWith(key).compact();
    } 
 
    public Boolean validateJwtToken(String token, UserDetails userDetails) { 

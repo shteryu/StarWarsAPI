@@ -22,6 +22,8 @@ import dev.shteryu.star_wars.web.dto.PlanetCreateRequest;
 import dev.shteryu.star_wars.web.dto.PlanetResponse;
 import dev.shteryu.star_wars.web.dto.PlanetUpdateRequest;
 import dev.shteryu.star_wars.web.dto.StarWarsApiPage;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
@@ -58,6 +60,7 @@ public class PlanetController {
     }
     
     @PostMapping("")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<PlanetResponse> createPlanet(@RequestBody PlanetCreateRequest planetDto) {
 
         Map<String, String> validationErrors = validator.validate(planetDto);
@@ -73,6 +76,7 @@ public class PlanetController {
     }
 
     @PatchMapping("/{planetId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<PlanetResponse> updatePlanet(@PathVariable String planetId,
             @RequestBody PlanetUpdateRequest planetDto) {
 
@@ -93,6 +97,7 @@ public class PlanetController {
     }
 
     @DeleteMapping("/{planetId}")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public void deletePlanetById(@PathVariable String planetId) {
         planetService.deleteById(planetId);
     }

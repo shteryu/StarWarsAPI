@@ -22,6 +22,11 @@ import dev.shteryu.star_wars.web.dto.PeopleCreateRequest;
 import dev.shteryu.star_wars.web.dto.PeopleResponse;
 import dev.shteryu.star_wars.web.dto.PeopleUpdateRequest;
 import dev.shteryu.star_wars.web.dto.StarWarsApiPage;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
@@ -42,22 +47,26 @@ public class PeopleController {
 
     @GetMapping(name = "", produces = "application/json")
     public StarWarsApiPage<PeopleResponse> getAllPeople(
-        @RequestParam(required = false, defaultValue = "0") Integer currentPage) {
-            Page<PeopleResponse> personPage =
-            peopleService.fetchAll(currentPage, PAFE_SIZE)
-            .map(peopleMapper::responseFromModel);
+            @RequestParam(required = false, defaultValue = "0") Integer currentPage) {
+        Page<PeopleResponse> personPage =
+                peopleService.fetchAll(currentPage, PAFE_SIZE).map(peopleMapper::responseFromModel);
 
         return new StarWarsApiPage<>(personPage);
     }
 
-    @GetMapping(value="/{peopleId}")
+    @GetMapping(value = "/{peopleId}")
     public ResponseEntity<PeopleResponse> getPeopleById(@PathVariable String peopleId) {
         People people = peopleService.findById(peopleId);
 
         return ResponseEntity.ok(peopleMapper.responseFromModel(people));
     }
-    
+
     @PostMapping("")
+    @Operation(security = {@SecurityRequirement(name = "bearer-key")}, responses = {
+            @ApiResponse(responseCode = "200", description = "People created",
+                    content = @Content(schema = @Schema(implementation = PeopleResponse.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid People Creation Data",
+                    content = @Content(schema = @Schema(implementation = ExceptionHandlerAdvice.GenericExeptionBody.class)))})
     public ResponseEntity<PeopleResponse> createPeople(@RequestBody PeopleCreateRequest peopleDto) {
 
         Map<String, String> validationErrors = validator.validate(peopleDto);
@@ -73,6 +82,7 @@ public class PeopleController {
     }
 
     @PatchMapping("/{peopleId}")
+    @Operation(security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<PeopleResponse> updatePeople(@PathVariable String peopleId,
             @RequestBody PeopleUpdateRequest peopleDto) {
 
@@ -93,9 +103,10 @@ public class PeopleController {
     }
 
     @DeleteMapping("/{personId}")
+    @Operation(security = {@SecurityRequirement(name = "bearer-key")})
     public void deletePeopleById(@PathVariable String peopleId) {
         peopleService.deleteById(peopleId);
     }
 
-    
+
 }
