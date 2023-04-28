@@ -1,0 +1,2533 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/films/{filmId}/planets": {
+            "put": {
+                "tags": [
+                    "film-controller"
+                ],
+                "operationId": "setFilmPlanets",
+                "parameters": [
+                    {
+                        "name": "filmId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FilmPlanetsUpsertRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FilmPlanetsGetResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/films/{filmId}/people": {
+            "put": {
+                "tags": [
+                    "film-controller"
+                ],
+                "operationId": "setFilmPeople",
+                "parameters": [
+                    {
+                        "name": "filmId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FilmPeopleUpsertRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FilmPeopleGetResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/vehicles": {
+            "get": {
+                "tags": [
+                    "vehicle-controller"
+                ],
+                "operationId": "getAllVehicle",
+                "parameters": [
+                    {
+                        "name": "currentPage",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StarWarsApiPageVehicleResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle-controller"
+                ],
+                "operationId": "createVehicle",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VehicleCreateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VehicleResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/token": {
+            "post": {
+                "tags": [
+                    "token-controller"
+                ],
+                "operationId": "obtainToken",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TokenRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/starships": {
+            "get": {
+                "tags": [
+                    "starship-controller"
+                ],
+                "operationId": "getAllStarship",
+                "parameters": [
+                    {
+                        "name": "currentPage",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StarWarsApiPageStarshipResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "starship-controller"
+                ],
+                "operationId": "createStarship",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StarshipCreateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StarshipResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/species": {
+            "get": {
+                "tags": [
+                    "specie-controller"
+                ],
+                "operationId": "getAllSpecie",
+                "parameters": [
+                    {
+                        "name": "currentPage",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StarWarsApiPageSpecieResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "specie-controller"
+                ],
+                "operationId": "createSpecie",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SpecieCreateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SpecieResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/planets": {
+            "get": {
+                "tags": [
+                    "planet-controller"
+                ],
+                "operationId": "getAllPlanets",
+                "parameters": [
+                    {
+                        "name": "currentPage",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StarWarsApiPagePlanetResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "planet-controller"
+                ],
+                "operationId": "createPlanet",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlanetCreateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlanetResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/people": {
+            "get": {
+                "tags": [
+                    "people-controller"
+                ],
+                "operationId": "getAllPeople",
+                "parameters": [
+                    {
+                        "name": "currentPage",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StarWarsApiPagePeopleResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "people-controller"
+                ],
+                "operationId": "createPeople",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PeopleCreateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "People created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PeopleResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid People Creation Data",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericExeptionBody"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/films": {
+            "get": {
+                "tags": [
+                    "film-controller"
+                ],
+                "operationId": "getAllFilms",
+                "parameters": [
+                    {
+                        "name": "currentPage",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StarWarsApiPageFilmResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "film-controller"
+                ],
+                "operationId": "createFilm",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FilmCreateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FilmResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/vehicles/{vehicleId}": {
+            "get": {
+                "tags": [
+                    "vehicle-controller"
+                ],
+                "operationId": "getVehicleById",
+                "parameters": [
+                    {
+                        "name": "vehicleId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VehicleResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "vehicle-controller"
+                ],
+                "operationId": "deleteVehicleById",
+                "parameters": [
+                    {
+                        "name": "vehicleId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "vehicle-controller"
+                ],
+                "operationId": "updateVehicle",
+                "parameters": [
+                    {
+                        "name": "vehicleId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VehicleUpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VehicleResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/starships/{starshipId}": {
+            "get": {
+                "tags": [
+                    "starship-controller"
+                ],
+                "operationId": "getStarshipById",
+                "parameters": [
+                    {
+                        "name": "starshipId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StarshipResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "starship-controller"
+                ],
+                "operationId": "deleteStarshipById",
+                "parameters": [
+                    {
+                        "name": "starshipId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "starship-controller"
+                ],
+                "operationId": "updateStarship",
+                "parameters": [
+                    {
+                        "name": "starshipId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StarshipUpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StarshipResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/species/{specieId}": {
+            "get": {
+                "tags": [
+                    "specie-controller"
+                ],
+                "operationId": "getSpecieById",
+                "parameters": [
+                    {
+                        "name": "specieId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SpecieResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "specie-controller"
+                ],
+                "operationId": "deleteSpecieById",
+                "parameters": [
+                    {
+                        "name": "specieId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "specie-controller"
+                ],
+                "operationId": "updateSpecie",
+                "parameters": [
+                    {
+                        "name": "specieId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SpecieUpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SpecieResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/planets/{planetId}": {
+            "get": {
+                "tags": [
+                    "planet-controller"
+                ],
+                "operationId": "getPlanetById",
+                "parameters": [
+                    {
+                        "name": "planetId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlanetResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "planet-controller"
+                ],
+                "operationId": "deletePlanetById",
+                "parameters": [
+                    {
+                        "name": "planetId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "planet-controller"
+                ],
+                "operationId": "updatePlanet",
+                "parameters": [
+                    {
+                        "name": "planetId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlanetUpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlanetResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/people/{peopleId}": {
+            "get": {
+                "tags": [
+                    "people-controller"
+                ],
+                "operationId": "getPeopleById",
+                "parameters": [
+                    {
+                        "name": "peopleId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PeopleResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "people-controller"
+                ],
+                "operationId": "updatePeople",
+                "parameters": [
+                    {
+                        "name": "peopleId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PeopleUpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PeopleResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/films/{filmId}": {
+            "get": {
+                "tags": [
+                    "film-controller"
+                ],
+                "operationId": "getFilmById",
+                "parameters": [
+                    {
+                        "name": "filmId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FilmResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "film-controller"
+                ],
+                "operationId": "deleteFilmById",
+                "parameters": [
+                    {
+                        "name": "filmId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "film-controller"
+                ],
+                "operationId": "updateFilm",
+                "parameters": [
+                    {
+                        "name": "filmId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FilmUpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FilmResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        },
+        "/people/{personId}": {
+            "delete": {
+                "tags": [
+                    "people-controller"
+                ],
+                "operationId": "deletePeopleById",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer-key": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "FilmPlanetsUpsertRequest": {
+                "required": [
+                    "filmPlanetsIds"
+                ],
+                "type": "object",
+                "properties": {
+                    "filmPlanetsIds": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "FilmPlanetsGetResponse": {
+                "type": "object",
+                "properties": {
+                    "filmPlanetsIds": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "FilmPeopleUpsertRequest": {
+                "required": [
+                    "filmPeopleIds"
+                ],
+                "type": "object",
+                "properties": {
+                    "filmPeopleIds": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "FilmPeopleGetResponse": {
+                "type": "object",
+                "properties": {
+                    "filmPeopleIds": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "VehicleCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "manufacturer": {
+                        "type": "string"
+                    },
+                    "costInCredits": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "maxAtmospheringSpeed": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "cargoCapacity": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "consumables": {
+                        "type": "string"
+                    },
+                    "vehicleClass": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Films": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "episodeId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "openingCrawl": {
+                        "type": "string"
+                    },
+                    "director": {
+                        "type": "string"
+                    },
+                    "producer": {
+                        "type": "string"
+                    },
+                    "releaseDate": {
+                        "type": "string"
+                    },
+                    "filmStarships": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Starships"
+                        }
+                    },
+                    "filmVehicles": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Vehicles"
+                        }
+                    },
+                    "filmSpecies": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Species"
+                        }
+                    }
+                }
+            },
+            "People": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "height": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "mass": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "hairColor": {
+                        "type": "string"
+                    },
+                    "skinColor": {
+                        "type": "string"
+                    },
+                    "eyeColor": {
+                        "type": "string"
+                    },
+                    "birthYear": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "peoplePlanets": {
+                        "$ref": "#/components/schemas/Planets"
+                    },
+                    "peopleSpecies": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Species"
+                        }
+                    },
+                    "peopleFilms": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    },
+                    "peopleVehicles": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Vehicles"
+                        }
+                    },
+                    "peopleStarships": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Starships"
+                        }
+                    }
+                }
+            },
+            "Planets": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "rotationPeriod": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "orbitalPeriod": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "diameter": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "climate": {
+                        "type": "string"
+                    },
+                    "gravity": {
+                        "type": "string"
+                    },
+                    "terrain": {
+                        "type": "string"
+                    },
+                    "surfaceWater": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "population": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "planetPeople": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "planetFilms": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    }
+                }
+            },
+            "Species": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "classification": {
+                        "type": "string"
+                    },
+                    "designation": {
+                        "type": "string"
+                    },
+                    "averageHeight": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "skinColors": {
+                        "type": "string"
+                    },
+                    "hairColors": {
+                        "type": "string"
+                    },
+                    "eyeColors": {
+                        "type": "string"
+                    },
+                    "averageLifespan": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "homeworld": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "type": "string"
+                    },
+                    "speciePeople": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "specieFilms": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    }
+                }
+            },
+            "Starships": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "manufacturer": {
+                        "type": "string"
+                    },
+                    "costInCredits": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "maxAtmospheringSpeed": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "cargoCapacity": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "consumables": {
+                        "type": "string"
+                    },
+                    "vehicleClass": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "starshipPeople": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "starshipFilms": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    }
+                }
+            },
+            "VehicleResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "manufacturer": {
+                        "type": "string"
+                    },
+                    "costInCredits": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "maxAtmospheringSpeed": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "cargoCapacity": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "consumables": {
+                        "type": "string"
+                    },
+                    "vehicleClass": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "pilots": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "films": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    }
+                }
+            },
+            "Vehicles": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "manufacturer": {
+                        "type": "string"
+                    },
+                    "costInCredits": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "maxAtmospheringSpeed": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "cargoCapacity": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "consumables": {
+                        "type": "string"
+                    },
+                    "vehicleClass": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "vehiclePeople": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "vehicleFilms": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    }
+                }
+            },
+            "TokenRequest": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "TokenResponse": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "StarshipCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "manufacturer": {
+                        "type": "string"
+                    },
+                    "costInCredits": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "maxAtmospheringSpeed": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "cargoCapacity": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "consumables": {
+                        "type": "string"
+                    },
+                    "vehicleClass": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "StarshipResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "manufacturer": {
+                        "type": "string"
+                    },
+                    "costInCredits": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "maxAtmospheringSpeed": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "cargoCapacity": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "consumables": {
+                        "type": "string"
+                    },
+                    "vehicleClass": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "pilots": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "films": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    }
+                }
+            },
+            "SpecieCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "classification": {
+                        "type": "string"
+                    },
+                    "designation": {
+                        "type": "string"
+                    },
+                    "averageHeight": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "skinColors": {
+                        "type": "string"
+                    },
+                    "hairColors": {
+                        "type": "string"
+                    },
+                    "eyeColors": {
+                        "type": "string"
+                    },
+                    "averageLifespan": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "homeworld": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "type": "string"
+                    }
+                }
+            },
+            "SpecieResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "classification": {
+                        "type": "string"
+                    },
+                    "designation": {
+                        "type": "string"
+                    },
+                    "averageHeight": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "skinColors": {
+                        "type": "string"
+                    },
+                    "hairColors": {
+                        "type": "string"
+                    },
+                    "eyeColors": {
+                        "type": "string"
+                    },
+                    "averageLifespan": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "homeworld": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "type": "string"
+                    },
+                    "people": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "films": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    }
+                }
+            },
+            "PlanetCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "rotationPeriod": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "orbitalPeriod": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "diameter": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "climate": {
+                        "type": "string"
+                    },
+                    "gravity": {
+                        "type": "string"
+                    },
+                    "terrain": {
+                        "type": "string"
+                    },
+                    "surfaceWater": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "population": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PlanetResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "rotationPeriod": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "orbitalPeriod": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "diameter": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "climate": {
+                        "type": "string"
+                    },
+                    "gravity": {
+                        "type": "string"
+                    },
+                    "terrain": {
+                        "type": "string"
+                    },
+                    "surfaceWater": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "population": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "residents": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "films": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    }
+                }
+            },
+            "PeopleResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "height": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "mass": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "hairColor": {
+                        "type": "string"
+                    },
+                    "skinColor": {
+                        "type": "string"
+                    },
+                    "eyeColor": {
+                        "type": "string"
+                    },
+                    "birthYear": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "planets": {
+                        "$ref": "#/components/schemas/Planets"
+                    },
+                    "films": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Films"
+                        }
+                    },
+                    "species": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Species"
+                        }
+                    },
+                    "vehicles": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Vehicles"
+                        }
+                    },
+                    "starships": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Starships"
+                        }
+                    }
+                }
+            },
+            "GenericExeptionBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "errors": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "clazz": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PeopleCreateRequest": {
+                "required": [
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "height": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "mass": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "hairColor": {
+                        "type": "string"
+                    },
+                    "skinColor": {
+                        "type": "string"
+                    },
+                    "eyeColor": {
+                        "type": "string"
+                    },
+                    "birthYear": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "FilmCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "episodeId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "openingCrawl": {
+                        "type": "string"
+                    },
+                    "director": {
+                        "type": "string"
+                    },
+                    "producer": {
+                        "type": "string"
+                    },
+                    "releaseDate": {
+                        "type": "string"
+                    }
+                }
+            },
+            "FilmResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "episodeId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "openingCrawl": {
+                        "type": "string"
+                    },
+                    "director": {
+                        "type": "string"
+                    },
+                    "producer": {
+                        "type": "string"
+                    },
+                    "releaseDate": {
+                        "type": "string"
+                    },
+                    "characters": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "planets": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Planets"
+                        }
+                    },
+                    "starships": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Starships"
+                        }
+                    },
+                    "vehicles": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Vehicles"
+                        }
+                    },
+                    "species": {
+                        "uniqueItems": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Species"
+                        }
+                    }
+                }
+            },
+            "VehicleUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "manufacturer": {
+                        "type": "string"
+                    },
+                    "costInCredits": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "maxAtmospheringSpeed": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "cargoCapacity": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "consumables": {
+                        "type": "string"
+                    },
+                    "vehicleClass": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "StarshipUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "manufacturer": {
+                        "type": "string"
+                    },
+                    "costInCredits": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "maxAtmospheringSpeed": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "cargoCapacity": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "consumables": {
+                        "type": "string"
+                    },
+                    "vehicleClass": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "SpecieUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "classification": {
+                        "type": "string"
+                    },
+                    "designation": {
+                        "type": "string"
+                    },
+                    "averageHeight": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "skinColors": {
+                        "type": "string"
+                    },
+                    "hairColors": {
+                        "type": "string"
+                    },
+                    "eyeColors": {
+                        "type": "string"
+                    },
+                    "averageLifespan": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "homeworld": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PlanetUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "rotationPeriod": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "orbitalPeriod": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "diameter": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "climate": {
+                        "type": "string"
+                    },
+                    "gravity": {
+                        "type": "string"
+                    },
+                    "terrain": {
+                        "type": "string"
+                    },
+                    "surfaceWater": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "population": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PeopleUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "height": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "mass": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "hairColor": {
+                        "type": "string"
+                    },
+                    "skinColor": {
+                        "type": "string"
+                    },
+                    "eyeColor": {
+                        "type": "string"
+                    },
+                    "birthYear": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "FilmUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "episodeId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "openingCrawl": {
+                        "type": "string"
+                    },
+                    "director": {
+                        "type": "string"
+                    },
+                    "producer": {
+                        "type": "string"
+                    },
+                    "releaseDate": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PaginationMetadata": {
+                "type": "object",
+                "properties": {
+                    "currentPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "StarWarsApiPageVehicleResponse": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationMetadata"
+                    },
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/VehicleResponse"
+                        }
+                    }
+                }
+            },
+            "StarWarsApiPageStarshipResponse": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationMetadata"
+                    },
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StarshipResponse"
+                        }
+                    }
+                }
+            },
+            "StarWarsApiPageSpecieResponse": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationMetadata"
+                    },
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SpecieResponse"
+                        }
+                    }
+                }
+            },
+            "StarWarsApiPagePlanetResponse": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationMetadata"
+                    },
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PlanetResponse"
+                        }
+                    }
+                }
+            },
+            "StarWarsApiPagePeopleResponse": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationMetadata"
+                    },
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PeopleResponse"
+                        }
+                    }
+                }
+            },
+            "StarWarsApiPageFilmResponse": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationMetadata"
+                    },
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FilmResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearer-key": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

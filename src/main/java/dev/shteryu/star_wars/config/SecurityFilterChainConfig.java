@@ -26,10 +26,13 @@ public class SecurityFilterChainConfig {
                 .authorizeHttpRequests( auth -> {
                     auth
                     .requestMatchers(HttpMethod.POST, "/token").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/dummy").permitAll()
                     .requestMatchers(HttpMethod.GET, "/swagger-ui/*").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/v3/*").permitAll()
                     .requestMatchers(HttpMethod.GET, "/people", "/planets", "/films", "/vehicles", "/species").permitAll()
                     .requestMatchers(HttpMethod.POST, "/people", "/planets", "/films", "/vehicles", "/species").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.PATCH, "/people", "/planets", "/films", "/vehicles", "/species").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.PUT, "/people", "/planets", "/films", "/vehicles", "/species").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.DELETE, "/people", "/planets", "/films", "/vehicles", "/species").hasRole("ADMIN")
                     .anyRequest().authenticated();
                 })
